@@ -16,9 +16,12 @@ function initializeCamera() {
 			video.play();
 		};
 	}).catch(function(error) {
-		console.log('got this error: ', error);
-		alert(error.name + (error.message.length ? ': ' + error.message : ''));
-
+		if(error.name == "DevicesNotFoundError") {
+			alert("Error: no camera was found.");
+		} else {
+			console.log('got this error: ', error);
+			alert(error.name + (error.message.length ? ': ' + error.message : ''));	
+		}
 	});
 }
 
